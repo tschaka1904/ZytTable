@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {WHERE_AM_I} from "../Data/tram_info";
 
 class TimeTableColumn extends Component {
@@ -10,7 +9,7 @@ class TimeTableColumn extends Component {
         };
         this.interval = null;
     }
-    
+
     componentDidMount() {
         if (this.props.item.planned_arrival_time === 'jetzt') {
             this.interval = setInterval(() => {

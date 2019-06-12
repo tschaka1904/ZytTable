@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {Component} from "react";
 import {getData} from "../Data/tram_info";
 import TimeTableHeader from "./TimeTableHeader";
 import TimeTableTitle from "./TimeTableTitle";
@@ -6,7 +6,7 @@ import TimeTableColumn from "./TimeTableColumn";
 import {MILLISECONDS, timeTableColumnObjectFactory} from "../Utils/TimeTableUtils";
 
 
-export default class TimeTable extends React.Component {
+export default class TimeTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
