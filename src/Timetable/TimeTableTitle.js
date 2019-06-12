@@ -21,7 +21,7 @@ export default class TimeTableTitle extends Component {
 }
 
 TimeTableTitle.defaultPropTypes = {
-    lastUpdate: null
+    lastUpdate: ''
 };
 
 TimeTableTitle.propTypes = {

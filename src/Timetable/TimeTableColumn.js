@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {WHERE_AM_I} from "../Data/tram_info";
-import TimeTableHeader from "./TimeTableHeader";
 import PropTypes from "prop-types";
 
 class TimeTableColumn extends Component {
