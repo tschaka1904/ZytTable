@@ -30,12 +30,19 @@ export function calculateDepartureTime (plannedDepartureDateString, currentDelay
     return check.getMinutes();
 }
 
+export function timeTableColumnObjectFactory(rawItemObject, currentDate) {
+    return {
+        vehicleType: rawItemObject.type,
+        planned_arrival_time: calculateDepartureTime(rawItemObject.time, rawItemObject.dep_delay, currentDate),
+        time: rawItemObject.time,
+        destination: rawItemObject.terminal.name,
+        line: rawItemObject.line,
+        delay: rawItemObject.dep_delay,
+    };
+}
+
 export const MILLISECONDS = {
     TEN_SECONDS: 10000,
     FIFTEEN_SECONDS: 15000,
     ONE_MINUTE: 60000,
-};
-
-export const mock = () => {
-    return 2
 };
