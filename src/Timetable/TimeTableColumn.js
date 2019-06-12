@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {WHERE_AM_I} from "../Data/tram_info";
 import PropTypes from "prop-types";
+import {TIMETABLE_STATUS} from "../Utils/TimeTableUtils";
 
 class TimeTableColumn extends Component {
     constructor(props) {
@@ -12,7 +13,7 @@ class TimeTableColumn extends Component {
     }
 
     componentDidMount() {
-        if (this.props.item.planned_arrival_time === 'jetzt') {
+        if (this.props.item.planned_arrival_time === TIMETABLE_STATUS.ARRIVED) {
             this.interval = setInterval(() => {
                 this.blink()
             }, 1000);
@@ -41,11 +42,13 @@ class TimeTableColumn extends Component {
                 </div>
                 <div className="col-3 row">
                     <div
-                        className={`${this.props.item.planned_arrival_time === 'jetzt' || this.props.item.planned_arrival_time === 'Entfällt' ?
+                        className={`${this.props.item.planned_arrival_time === TIMETABLE_STATUS.ARRIVED ||
+                        this.props.item.planned_arrival_time === TIMETABLE_STATUS.CANCELED ?
                             'col-12 text-center' : 'col-6 text-right'}`}>
                         <h1>{this.props.item.planned_arrival_time}</h1>
                     </div>
-                    {this.props.item.planned_arrival_time !== 'jetzt' && this.props.item.planned_arrival_time !== 'Entfällt' ?
+                    {this.props.item.planned_arrival_time !== TIMETABLE_STATUS.ARRIVED &&
+                    this.props.item.planned_arrival_time !== TIMETABLE_STATUS.CANCELED ?
                         <div className={'col-6 text-left'}>
                             <h1>min</h1>
                         </div> : null}

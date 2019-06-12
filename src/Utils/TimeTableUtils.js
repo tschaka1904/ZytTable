@@ -1,10 +1,16 @@
-export function calculateDepartureTime (plannedDepartureDateString, currentDelayString, currentDate) {
+export const TIMETABLE_STATUS = {
+    CANCELED: 'annulliert',
+    ARRIVED: 'jetzt',
+    ARRIVES_SHORTLY: '<1'
+};
+
+export function calculateDepartureTime(plannedDepartureDateString, currentDelayString, currentDate) {
     let estimatedDeparture = new Date(plannedDepartureDateString.replace(' ', 'T').concat('Z'));
 
     let delayInMinutes = 0;
 
     if (currentDelayString === 'X') {
-        return 'Entfällt'
+        return TIMETABLE_STATUS.CANCELED
     }
 
     if (currentDelayString && currentDelayString.split('+')[1] !== '0') {
@@ -20,11 +26,11 @@ export function calculateDepartureTime (plannedDepartureDateString, currentDelay
     }
 
     if (check.getTime() < MILLISECONDS.FIFTEEN_SECONDS) {
-        return 'jetzt';
+        return TIMETABLE_STATUS.ARRIVED;
     }
 
     if (check.getTime() < MILLISECONDS.ONE_MINUTE) {
-        return '<1';
+        return TIMETABLE_STATUS.ARRIVES_SHORTLY;
     }
 
     return check.getMinutes();

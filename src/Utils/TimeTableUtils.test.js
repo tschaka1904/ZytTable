@@ -1,4 +1,4 @@
-import {calculateDepartureTime} from './TimeTableUtils';
+import {calculateDepartureTime, TIMETABLE_STATUS} from './TimeTableUtils';
 
 const PLANNED_DEPARTURE_DATE_STRING = '2019-10-27 20:12:00';
 const NO_DELAY = '+0';
@@ -10,34 +10,39 @@ test('A tram bus leaves in 1 Minute', () => {
 
 test('A tram bus leaves in leas than 1 Minute', () => {
     const mockCurrentDate = new Date('2019-10-27T20:11:25Z');
-    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate)).toBe('<1');
+    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate))
+        .toBe(TIMETABLE_STATUS.ARRIVES_SHORTLY)
 });
 
 test('A tram bus leaves in leas than 1 Minute', () => {
     const mockCurrentDate = new Date('2019-10-27T20:11:45Z');
-    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate)).toBe('<1');
+    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate))
+        .toBe(TIMETABLE_STATUS.ARRIVES_SHORTLY);
 });
 
 test('A tram bus leaves in leas than 1 Minute', () => {
     const mockCurrentDate = new Date('2019-10-27T20:11:46Z');
-    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate)).toBe('jetzt');
+    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate))
+        .toBe(TIMETABLE_STATUS.ARRIVED);
 });
 
 test('A tram bus leaves in leas than 1 Minute', () => {
     const mockCurrentDate = new Date('2019-10-27T20:12:00Z');
-    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate)).toBe('jetzt');
+    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate))
+        .toBe(TIMETABLE_STATUS.ARRIVED);
 });
 
 
 test('A tram bus leaves in leas than 1 Minute', () => {
     const mockCurrentDate = new Date('2019-10-27T20:12:01Z');
     expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate))
-        .toBe('jetzt');
+        .toBe(TIMETABLE_STATUS.ARRIVED);
 });
 
 test('A tram bus leaves in leas than 1 Minute', () => {
     const mockCurrentDate = new Date('2019-10-27T20:12:15Z');
-    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate)).toBe('jetzt');
+    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate))
+        .toBe(TIMETABLE_STATUS.ARRIVED);
 });
 
 test('A tram bus leaves in leas than 1 Minute', () => {
@@ -48,7 +53,8 @@ test('A tram bus leaves in leas than 1 Minute', () => {
 test('A tram bus leaves in leas than 1 Minute', () => {
     const mockCurrentDate = new Date('2019-10-27T20:12:16Z');
     const delay = 'X';
-    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, delay, mockCurrentDate)).toBe('Entfällt');
+    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, delay, mockCurrentDate))
+        .toBe(TIMETABLE_STATUS.CANCELED);
 });
 
 // Eira's Test
