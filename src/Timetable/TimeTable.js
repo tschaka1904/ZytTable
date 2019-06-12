@@ -3,7 +3,7 @@ import {getData} from "../Data/tram_info";
 import TimeTableHeader from "./TimeTableHeader";
 import TimeTableTitle from "./TimeTableTitle";
 import TimeTableColumn from "./TimeTableColumn";
-import {calculateDepartureTime} from "../Utils/TimeTableUtils";
+import {MILLISECONDS, timeTableColumnObjectFactory} from "../Utils/TimeTableUtils";
 
 
 export default class TimeTable extends React.Component {
@@ -19,41 +19,29 @@ export default class TimeTable extends React.Component {
         this.setup();
         setInterval(async () => {
             this.setup();
-        }, 10000);
+        }, MILLISECONDS.TEN_SECONDS);
     }
 
     setup() {
         getData().then(response => {
-            const firstFiveItems = response.data.connections.slice(0, 20);
-            // console.log(response.data.connections);
-            const newTable = [];
+            const reducedItemList = response.data.connections.slice(0, 20);
+            const freshTimeTableItelms = [];
             const currentDate = new Date();
-            firstFiveItems.forEach((rawItem) => {
-                const timeTableObj = this.createTimeTableObj(rawItem, currentDate);
-                if (timeTableObj.planned_arrival_time !== null) {
-                    newTable.push(timeTableObj)
+            reducedItemList.forEach((rawItem) => {
+                const timeTableColumnObj = timeTableColumnObjectFactory(rawItem, currentDate);
+                if (timeTableColumnObj.planned_arrival_time) {
+                    freshTimeTableItelms.push(timeTableColumnObj)
                 }
             });
-            if (newTable.length) {
+            if (freshTimeTableItelms.length) {
                 this.setState({
-                    timeTableItems: newTable,
+                    timeTableItems: freshTimeTableItelms,
                     lastUpdate: new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getUTCSeconds()
                 });
             }
         });
     }
 
-    createTimeTableObj(obj, currentData) {
-        const arvTime = calculateDepartureTime(obj.time, obj.dep_delay, currentData);
-        return {
-            vehicleType: obj.type,
-            planned_arrival_time: arvTime,
-            time: obj.time,
-            destination: obj.terminal.name,
-            line: obj.line,
-            delay: obj.dep_delay,
-        };
-    }
 
     render() {
         if (!this.state.timeTableItems.length) {
