@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {WHERE_AM_I} from "../Data/tram_info";
+import PropTypes from "prop-types";
 
-class TimeTableTitle extends Component {
+export default class TimeTableTitle extends Component {
     render() {
         return (
             <div className='row h-100'>
@@ -19,5 +20,10 @@ class TimeTableTitle extends Component {
     }
 }
 
+TimeTableTitle.defaultPropTypes = {
+    lastUpdate: null
+};
 
-export default TimeTableTitle;
+TimeTableTitle.propTypes = {
+    lastUpdate: PropTypes.string
+};

@@ -18,6 +18,7 @@ class TimeTableHeader extends Component {
     }
 }
 
+TimeTableHeader.defaultPropTypes = {};
 TimeTableHeader.propTypes = {};
 
 export default TimeTableHeader;
