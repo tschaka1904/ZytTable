@@ -1,5 +1,5 @@
 export function calculateDepartureTime (plannedDepartureDateString, currentDelayString, currentDate) {
-    let estimatedDeparture = Date.parse(plannedDepartureDateString);
+    let estimatedDeparture = Date.parse(plannedDepartureDateString.replace(' ', 'T').concat('Z'));
 
     let delayInMinutes = 0;
 
