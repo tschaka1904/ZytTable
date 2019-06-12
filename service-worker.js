@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ZytTable/precache-manifest.11fb36108b2a32e8e0259f975e0f09d3.js"
+  "/ZytTable/precache-manifest.e4d12d480f037266377947af5cb9e029.js"
 );
 
 self.addEventListener('message', (event) => {
