@@ -4,6 +4,7 @@ import TimeTableHeader from "./TimeTableHeader";
 import TimeTableTitle from "./TimeTableTitle";
 import TimeTableColumn from "./TimeTableColumn";
 import {MILLISECONDS, timeTableColumnObjectFactory} from "../Utils/TimeTableUtils";
+import moment from "moment";
 
 
 export default class TimeTable extends Component {
@@ -25,18 +26,18 @@ export default class TimeTable extends Component {
     setup() {
         getData().then(response => {
             const reducedItemList = response.data.connections.slice(0, 20);
-            const freshTimeTableItelms = [];
-            const currentDate = new Date();
+            const freshTimeTableItems = [];
+            const currentDate = moment();
             reducedItemList.forEach((rawItem) => {
                 const timeTableColumnObj = timeTableColumnObjectFactory(rawItem, currentDate);
                 if (timeTableColumnObj.planned_arrival_time) {
-                    freshTimeTableItelms.push(timeTableColumnObj)
+                    freshTimeTableItems.push(timeTableColumnObj)
                 }
             });
-            if (freshTimeTableItelms.length) {
+            if (freshTimeTableItems.length) {
                 this.setState({
-                    timeTableItems: freshTimeTableItelms,
-                    lastUpdate: new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getUTCSeconds()
+                    timeTableItems: freshTimeTableItems,
+                    lastUpdate: moment().format('HH:mm:ss a')
                 });
             }
         });

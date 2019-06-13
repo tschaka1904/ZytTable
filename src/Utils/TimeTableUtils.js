@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const TIMETABLE_STATUS = {
     CANCELED: 'annulliert',
     ARRIVED: 'jetzt',
@@ -5,7 +7,7 @@ export const TIMETABLE_STATUS = {
 };
 
 export function calculateDepartureTime(plannedDepartureDateString, currentDelayString, currentDate) {
-    let estimatedDeparture = new Date(plannedDepartureDateString.replace(' ', 'T').concat('Z'));
+    let estimatedDeparture = moment(plannedDepartureDateString);
 
     let delayInMinutes = 0;
 
@@ -15,25 +17,24 @@ export function calculateDepartureTime(plannedDepartureDateString, currentDelayS
 
     if (currentDelayString && currentDelayString.split('+')[1] !== '0') {
         delayInMinutes = currentDelayString.split('+')[1];
-        estimatedDeparture = estimatedDeparture + (delayInMinutes * currentDelayString.ONE_MINUTE)
-
+        estimatedDeparture = estimatedDeparture.add(moment.duration(delayInMinutes, 'm'));
     }
 
-    const check = new Date(estimatedDeparture - currentDate.getTime());
+    const check = moment.duration(estimatedDeparture.diff(currentDate));
 
-    if (check.getTime() < -MILLISECONDS.FIFTEEN_SECONDS) {
+    if (check.asMilliseconds() < -MILLISECONDS.FIFTEEN_SECONDS) {
         return null;
     }
 
-    if (check.getTime() < MILLISECONDS.FIFTEEN_SECONDS) {
+    if (check.asMilliseconds() < MILLISECONDS.FIFTEEN_SECONDS) {
         return TIMETABLE_STATUS.ARRIVED;
     }
 
-    if (check.getTime() < MILLISECONDS.ONE_MINUTE) {
+    if (check.asMilliseconds() < MILLISECONDS.ONE_MINUTE) {
         return TIMETABLE_STATUS.ARRIVES_SHORTLY;
     }
 
-    return check.getMinutes();
+    return Math.floor(check.asMinutes());
 }
 
 export function timeTableColumnObjectFactory(rawItemObject, currentDate) {
