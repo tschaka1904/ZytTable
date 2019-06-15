@@ -32,27 +32,18 @@ class TimeTableColumn extends Component {
 
     render() {
         return (
-            <div className={`row h-100 ${this.state.show ? '' : 'invisible'}`}>
-                <div className="col-2 text-center">
-                    <h1>{this.props.item.line}</h1>
+            <div className={`row text-height ${this.state.show ? '' : 'invisible'}`} style={{height: 'calc(100vh / 5)'}}>
+                <div className="col-4 col-lg-2 text-left text-lg-center">
+                    <span className="text-responsive">{this.props.item.line}</span>
                 </div>
-                <div className="col-7 text-left">
-                    <h1>{this.props.item.destination.includes(WHERE_AM_I.exclude) ?
-                        this.props.item.destination.split(',')[1] : this.props.item.destination}</h1>
+                <div className="order-lg-2 col-8 col-lg-4 text-right text-lg-center">
+                        <span className="text-responsive">{this.props.item.planned_arrival_time}</span>
                 </div>
-                <div className="col-3 row">
-                    <div
-                        className={`${this.props.item.planned_arrival_time === TIMETABLE_STATUS.ARRIVED ||
-                        this.props.item.planned_arrival_time === TIMETABLE_STATUS.CANCELED ?
-                            'col-12 text-center' : 'col-6 text-right'}`}>
-                        <h1>{this.props.item.planned_arrival_time}</h1>
-                    </div>
-                    {this.props.item.planned_arrival_time !== TIMETABLE_STATUS.ARRIVED &&
-                    this.props.item.planned_arrival_time !== TIMETABLE_STATUS.CANCELED ?
-                        <div className={'col-6 text-left'}>
-                            <h1>min</h1>
-                        </div> : null}
+                <div className="order-lg-1 col-12 col-lg-6 text-left">
+                    <span className="text-responsive">{this.props.item.destination.includes(WHERE_AM_I.exclude) ?
+                        this.props.item.destination.split(',')[1] : this.props.item.destination}</span>
                 </div>
+
             </div>
         );
     }

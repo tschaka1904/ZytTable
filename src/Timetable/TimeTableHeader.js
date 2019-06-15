@@ -5,13 +5,13 @@ class TimeTableHeader extends Component {
         return (
             <div className="row h-100">
                 <div className=" col-2 text-center">
-                    <h1><u>Linie</u></h1>
+                    <h2><u>Linie</u></h2>
                 </div>
                 <div className=" col-7 text-left">
-                    <h1 className=""><u>Fahrtziel</u></h1>
+                    <h2><u>Fahrtziel</u></h2>
                 </div>
                 <div className=" col-3 text-center">
-                    <h1><u>Abfahrt</u></h1>
+                    <h2><u>Abfahrt</u></h2>
                 </div>
             </div>
         );

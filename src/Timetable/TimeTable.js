@@ -49,14 +49,10 @@ export default class TimeTable extends Component {
             return null;
         }
         return (
-            <div className="h-100">
-                <TimeTableTitle lastUpdate={this.state.lastUpdate}/>
-                <TimeTableHeader/>
-                <div className="container-fluid">
-                    {this.state.timeTableItems.splice(0, 10).map((item) =>
-                        <TimeTableColumn key={item.vehicleType + '-' + item.line + Math.random()} item={item}/>
-                    )}
-                </div>
+            <div className="container" >
+                {this.state.timeTableItems.splice(0, 5).map((item) =>
+                    <TimeTableColumn key={item.vehicleType + '-' + item.line + Math.random()} item={item}/>
+                )}
             </div>
         );
     }
