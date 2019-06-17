@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ZytTable/static/css/main.beff4fb4.chunk.css",
+    "main.css": "/ZytTable/static/css/main.bf7134ba.chunk.css",
     "main.js": "/ZytTable/static/js/main.ca02acb9.chunk.js",
     "main.js.map": "/ZytTable/static/js/main.ca02acb9.chunk.js.map",
     "runtime~main.js": "/ZytTable/static/js/runtime~main.3f9ba573.js",
@@ -9,9 +9,9 @@
     "static/js/2.f8731913.chunk.js": "/ZytTable/static/js/2.f8731913.chunk.js",
     "static/js/2.f8731913.chunk.js.map": "/ZytTable/static/js/2.f8731913.chunk.js.map",
     "index.html": "/ZytTable/index.html",
-    "precache-manifest.6442be5c43cfcb02f3b3a545bda111b6.js": "/ZytTable/precache-manifest.6442be5c43cfcb02f3b3a545bda111b6.js",
+    "precache-manifest.a381fef44ef6a3c851d2d4ec44a38408.js": "/ZytTable/precache-manifest.a381fef44ef6a3c851d2d4ec44a38408.js",
     "service-worker.js": "/ZytTable/service-worker.js",
     "static/css/2.22a7d4ef.chunk.css.map": "/ZytTable/static/css/2.22a7d4ef.chunk.css.map",
-    "static/css/main.beff4fb4.chunk.css.map": "/ZytTable/static/css/main.beff4fb4.chunk.css.map"
+    "static/css/main.bf7134ba.chunk.css.map": "/ZytTable/static/css/main.bf7134ba.chunk.css.map"
   }
 }
