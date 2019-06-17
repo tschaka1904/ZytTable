@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3b83a27765a4ef54b9d025a8a36927d6",
+    "revision": "80077f429c97eaa7f00d5999fd82168a",
     "url": "/ZytTable/index.html"
   },
   {
-    "revision": "7a825fa79575e0c9a7a4",
+    "revision": "fd2e0fdc2acd2e3660a3",
     "url": "/ZytTable/static/css/2.22a7d4ef.chunk.css"
   },
   {
-    "revision": "8d96dd302ef02de743de",
+    "revision": "c251013c6a0095b51043",
     "url": "/ZytTable/static/css/main.bf7134ba.chunk.css"
   },
   {
-    "revision": "7a825fa79575e0c9a7a4",
-    "url": "/ZytTable/static/js/2.f8731913.chunk.js"
+    "revision": "fd2e0fdc2acd2e3660a3",
+    "url": "/ZytTable/static/js/2.6e8e4f29.chunk.js"
   },
   {
-    "revision": "8d96dd302ef02de743de",
-    "url": "/ZytTable/static/js/main.ca02acb9.chunk.js"
+    "revision": "c251013c6a0095b51043",
+    "url": "/ZytTable/static/js/main.6ae932a4.chunk.js"
   },
   {
     "revision": "c7e2c74ad0b4f89159b8",
