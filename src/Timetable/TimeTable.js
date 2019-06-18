@@ -5,6 +5,7 @@ import TimeTableTitle from "./TimeTableTitle";
 import TimeTableColumn from "./TimeTableColumn";
 import {MILLISECONDS, timeTableColumnObjectFactory} from "../Utils/TimeTableUtils";
 import moment from "moment";
+import Loading from "../Loading";
 
 
 export default class TimeTable extends Component {
@@ -12,12 +13,18 @@ export default class TimeTable extends Component {
         super(props);
         this.state = {
             timeTableItems: [],
-            lastUpdate: null
+            lastUpdate: null,
+            showLoader: true
         };
     }
 
     componentDidMount() {
         this.setup();
+        setTimeout(() => {
+            this.setState({
+                showLoader: false,
+            })
+        }, 3000);
         setInterval(async () => {
             this.setup();
         }, MILLISECONDS.TEN_SECONDS);
@@ -45,8 +52,8 @@ export default class TimeTable extends Component {
 
 
     render() {
-        if (!this.state.timeTableItems.length) {
-            return null;
+        if (!this.state.timeTableItems.length || this.state.showLoader) {
+            return <Loading/>;
         }
         return (
             <div className="container" >
