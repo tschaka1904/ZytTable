@@ -1,6 +1,6 @@
 .App {
   font-family: 'Press Start 2P', cursive;
-  color: #cc7300;
+  color: rgba(136, 69, 0, 0.93);
 }
 
 @media (min-width: 544px) {
@@ -23,9 +23,5 @@
 }
 
 .text-responsive {
-  font-size: calc(100% + 1vw + 1vh);
-}
-
-.text-height {
-  /*height: calc(100vh / 5);*/
+  font-size: calc(40% + 1vw + 1vh);
 }
