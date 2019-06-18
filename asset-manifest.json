@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/ZytTable/static/css/main.bf7134ba.chunk.css",
-    "main.js": "/ZytTable/static/js/main.718adea8.chunk.js",
-    "main.js.map": "/ZytTable/static/js/main.718adea8.chunk.js.map",
+    "main.css": "/ZytTable/static/css/main.113f1cd8.chunk.css",
+    "main.js": "/ZytTable/static/js/main.84bba529.chunk.js",
+    "main.js.map": "/ZytTable/static/js/main.84bba529.chunk.js.map",
     "runtime~main.js": "/ZytTable/static/js/runtime~main.3f9ba573.js",
     "runtime~main.js.map": "/ZytTable/static/js/runtime~main.3f9ba573.js.map",
     "static/css/2.22a7d4ef.chunk.css": "/ZytTable/static/css/2.22a7d4ef.chunk.css",
-    "static/js/2.44ec87fb.chunk.js": "/ZytTable/static/js/2.44ec87fb.chunk.js",
-    "static/js/2.44ec87fb.chunk.js.map": "/ZytTable/static/js/2.44ec87fb.chunk.js.map",
+    "static/js/2.df226a31.chunk.js": "/ZytTable/static/js/2.df226a31.chunk.js",
+    "static/js/2.df226a31.chunk.js.map": "/ZytTable/static/js/2.df226a31.chunk.js.map",
     "index.html": "/ZytTable/index.html",
-    "precache-manifest.1af3caa51d079874678f7e4499d712e3.js": "/ZytTable/precache-manifest.1af3caa51d079874678f7e4499d712e3.js",
+    "precache-manifest.30c5218fee194eeddd69f87376a512fd.js": "/ZytTable/precache-manifest.30c5218fee194eeddd69f87376a512fd.js",
     "service-worker.js": "/ZytTable/service-worker.js",
     "static/css/2.22a7d4ef.chunk.css.map": "/ZytTable/static/css/2.22a7d4ef.chunk.css.map",
-    "static/css/main.bf7134ba.chunk.css.map": "/ZytTable/static/css/main.bf7134ba.chunk.css.map"
+    "static/css/main.113f1cd8.chunk.css.map": "/ZytTable/static/css/main.113f1cd8.chunk.css.map",
+    "static/media/zyttable_logo.png": "/ZytTable/static/media/zyttable_logo.426f55b4.png"
   }
 }
