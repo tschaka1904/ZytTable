@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  background-image: linear-gradient(to bottom, transparent 50%, #313335 50%),
-  linear-gradient(to right, #404244 50%, #313335 50%);
+  background-image: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 1) 50%),
+  linear-gradient(to right, #0e0f11 50%, rgba(0, 0, 0, 0.98) 50%);
   background-size: 25px 25px, 25px 25px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
