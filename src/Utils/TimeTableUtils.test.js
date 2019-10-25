@@ -6,7 +6,7 @@ const NO_DELAY = '+0';
 
 test('A tram bus leaves in 1 Minute', () => {
     const mockCurrentDate = moment('2019-10-27 20:11:00');
-    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate)).toBe(1);
+    expect(calculateDepartureTime(PLANNED_DEPARTURE_DATE_STRING, NO_DELAY, mockCurrentDate)).toBe('1\'');
 });
 
 test('A tram bus leaves in leas than 1 Minute', () => {
@@ -61,7 +61,7 @@ test('A tram bus leaves in leas than 1 Minute', () => {
 test('A tram bus leaves in leas than 1 Minute', () => {
     const mockCurrentDate = moment('2019-06-13 01:30:00');
     expect(calculateDepartureTime('2019-06-13 04:53:00', NO_DELAY, mockCurrentDate))
-        .toBe(203)
+        .toBe('203\'')
 });
 
 // Eira's Test

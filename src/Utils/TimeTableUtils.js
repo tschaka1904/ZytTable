@@ -1,9 +1,9 @@
 import moment from "moment";
 
 export const TIMETABLE_STATUS = {
-    CANCELED: 'annulliert',
+    CANCELED: 'X',
     ARRIVED: 'jetzt',
-    ARRIVES_SHORTLY: '<1'
+    ARRIVES_SHORTLY: '< 1\''
 };
 
 export function calculateDepartureTime(plannedDepartureDateString, currentDelayString, currentDate) {
@@ -34,7 +34,7 @@ export function calculateDepartureTime(plannedDepartureDateString, currentDelayS
         return TIMETABLE_STATUS.ARRIVES_SHORTLY;
     }
 
-    return Math.floor(check.asMinutes());
+    return Math.round(check.asMinutes()) + '\'';
 }
 
 export function timeTableColumnObjectFactory(rawItemObject, currentDate) {

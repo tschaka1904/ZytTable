@@ -32,14 +32,14 @@ class TimeTableColumn extends Component {
 
     render() {
         return (
-            <div className={`row text-height ${this.state.show ? '' : 'invisible'}`} style={{height: 'calc(100vh / 5)'}}>
-                <div className="col-4 col-lg-2 text-left text-lg-center">
+            <div className={`row text-height ${this.state.show ? '' : 'invisible'}`} style={{height: 'calc(100vh / 6)'}}>
+                <div className="col-4 col-xl-2 text-left">
                     <span className="text-responsive">{this.props.item.line}</span>
                 </div>
-                <div className="order-lg-2 col-8 col-lg-4 text-right text-lg-center">
+                <div className="order-xl-2 col-8 col-xl-4 text-right">
                         <span className="text-responsive">{this.props.item.planned_arrival_time}</span>
                 </div>
-                <div className="order-lg-1 col-12 col-lg-6 text-left">
+                <div className="order-xl-1 col-12 col-xl-6 text-left">
                     <span className="text-responsive">{this.props.item.destination.includes(WHERE_AM_I.exclude) ?
                         this.props.item.destination.split(',')[1] : this.props.item.destination}</span>
                 </div>

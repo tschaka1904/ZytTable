@@ -5,22 +5,52 @@ import TimeTableTitle from "./TimeTableTitle";
 import TimeTableColumn from "./TimeTableColumn";
 import {MILLISECONDS, timeTableColumnObjectFactory} from "../Utils/TimeTableUtils";
 import moment from "moment";
+import Loading from "../Loading";
 
+const schedule = require('node-schedule');
 
 export default class TimeTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
             timeTableItems: [],
-            lastUpdate: null
+            lastUpdate: null,
+            showLoader: true,
+            aSleep: false,
         };
     }
 
     componentDidMount() {
         this.setup();
-        setInterval(async () => {
-            this.setup();
-        }, MILLISECONDS.TEN_SECONDS);
+        this.loaderTimout(3000);
+        schedule.scheduleJob('*/10 * * * * *', () => {
+            if(!this.state.aSleep) {
+                this.setup();
+            }
+        });
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') {
+                this.setState({
+                    showLoader: true,
+                    aSleep: true,
+                    timeTableItems: []
+                })
+            } else {
+                this.setState({
+                    aSleep: false,
+                });
+                this.loaderTimout(2000)
+            }
+        });
+    }
+
+    loaderTimout(time) {
+        setTimeout(() => {
+            this.setState({
+                showLoader: false
+            })
+        }, time);
     }
 
     setup() {
@@ -37,7 +67,7 @@ export default class TimeTable extends Component {
             if (freshTimeTableItems.length) {
                 this.setState({
                     timeTableItems: freshTimeTableItems,
-                    lastUpdate: moment().format('HH:mm:ss a')
+                    lastUpdate: moment().format('HH:mm:ss')
                 });
             }
         });
@@ -45,11 +75,12 @@ export default class TimeTable extends Component {
 
 
     render() {
-        if (!this.state.timeTableItems.length) {
-            return null;
+        if (!this.state.timeTableItems.length || this.state.showLoader) {
+            return <Loading/>;
         }
         return (
-            <div className="container" >
+            <div className="container">
+                <TimeTableTitle lastUpdate={this.state.lastUpdate}/>
                 {this.state.timeTableItems.splice(0, 5).map((item) =>
                     <TimeTableColumn key={item.vehicleType + '-' + item.line + Math.random()} item={item}/>
                 )}
